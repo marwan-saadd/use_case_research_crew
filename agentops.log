@@ -1,4 +1,4 @@
-2025-11-21 13:06:46,749 - INFO - Session Replay for default trace: https://app.agentops.ai/sessions?trace_id=d65ed21603f3e2a927af4a166aa7db29
-2025-11-21 13:06:47,495 - INFO - You're on the agentops free plan 🤔
-2025-11-21 13:10:07,502 - ERROR - Error in span openai/gemini-2.5-flash.llm: list index out of range
-2025-11-21 13:12:39,296 - INFO - Session Replay for default.session trace: https://app.agentops.ai/sessions?trace_id=d65ed21603f3e2a927af4a166aa7db29
+2025-12-03 11:45:04,133 - INFO - Session Replay for default trace: https://app.agentops.ai/sessions?trace_id=043281d993f15f7fbaedb16127d80299
+2025-12-03 11:45:04,923 - INFO - You're on the agentops free plan 🤔
+2025-12-03 11:45:21,346 - ERROR - Error in span crewai.workflow: Failed to get native MCP tools: cannot access local variable 'tools_list' where it is not associated with a value
+2025-12-03 11:45:25,322 - INFO - Session Replay for default.session trace: https://app.agentops.ai/sessions?trace_id=043281d993f15f7fbaedb16127d80299

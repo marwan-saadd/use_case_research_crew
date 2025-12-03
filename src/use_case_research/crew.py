@@ -20,8 +20,8 @@ OBSIDIAN_API_KEY = os.getenv("OBSIDIAN_API_KEY")
 
 
 @CrewBase
-class UntitledProjectCrew:
-    """UntitledProject crew"""
+class UseCaseResearchCrew:
+    """Use Case Research Crew"""
 
     def _build_llm(self, temperature: float) -> LLM:
         model = os.getenv("MODEL")
@@ -188,7 +188,7 @@ class UntitledProjectCrew:
 
     @crew
     def crew(self) -> Crew:
-        """Creates the UntitledProject crew"""
+        """Creates the Use Case Research crew"""
         return Crew(
             agents=self.agents,  # Automatically created by the @agent decorator
             tasks=self.tasks,  # Automatically created by the @task decorator

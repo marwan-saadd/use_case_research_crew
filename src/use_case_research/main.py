@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 import agentops
 import os
-from untitled_project.crew import UntitledProjectCrew
+from use_case_research.crew import UseCaseResearchCrew
 
 # This main file is intended to be a way for your to run your
 # crew locally, so refrain from adding unnecessary logic into this file.
@@ -27,7 +27,7 @@ def run():
         "use_case_description": use_case_description,
         "industry": industry,
     }
-    crew = UntitledProjectCrew().crew()
+    crew = UseCaseResearchCrew().crew()
     crew.kickoff(inputs=inputs)
 
 
@@ -45,7 +45,7 @@ def train():
         'strategic_priority': 'sample_value'
     }
     try:
-        UntitledProjectCrew().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
+        UseCaseResearchCrew().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while training the crew: {e}")
@@ -55,7 +55,7 @@ def replay():
     Replay the crew execution from a specific task.
     """
     try:
-        UntitledProjectCrew().crew().replay(task_id=sys.argv[1])
+        UseCaseResearchCrew().crew().replay(task_id=sys.argv[1])
 
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
@@ -74,7 +74,7 @@ def test():
         'strategic_priority': 'sample_value'
     }
     try:
-        UntitledProjectCrew().crew().test(n_iterations=int(sys.argv[1]), openai_model_name=sys.argv[2], inputs=inputs)
+        UseCaseResearchCrew().crew().test(n_iterations=int(sys.argv[1]), openai_model_name=sys.argv[2], inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while testing the crew: {e}")

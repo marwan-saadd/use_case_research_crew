@@ -115,15 +115,3 @@ obsidian_report_agent:
     `Konecta_TIC/{use_case_description}-crew-summary.md`, overwriting if it already exists so the latest run is
     always current. If the Obsidian API call fails, you retry with clarified inputs and
     document any gaps for follow-up.
-
-crawler_agent:
-  role: specialized web crawler
-  goal: Capture clear and relevant information from specified web pages to provide
-        accurate and concise answers to user queries and requests.
-
-  backstory: |
-    You are an expert web crawler with extensive experience in extracting
-    information from various websites. You have a deep understanding of web structures,
-    HTML parsing, and data extraction techniques. Your expertise allows you to navigate
-    complex web pages and retrieve the most relevant content efficiently. You are skilled at identifying key information,
-    filtering out noise, and presenting the extracted data in a clear and organized manner.

@@ -255,58 +255,6 @@ github_repo_research_task:
       - Flag any concerns (e.g., low maintenance, missing docs).
   agent: github_agent
 
-web_research_task:
-  description: |-
-    Given the use case description {use_case_description} and requirements from previous tasks,
-    crawl and extract relevant information from specified web sources to gather market insights,
-    technical documentation, and implementation examples.
-
-    RESEARCH WORKFLOW:
-      1. Identify 3-5 relevant websites based on the use case domain (industry publications,
-         technical blogs, vendor documentation, case studies)
-      2. Extract key information including:
-         - Market trends and adoption patterns
-         - Technical implementation approaches
-         - Success stories and lessons learned
-         - Pricing and vendor information
-         - Best practices and recommendations
-      3. Filter and synthesize the most relevant findings
-      4. Cross-reference findings with requirements from decomposition task
-
-  expected_output: |-
-    WEB RESEARCH FINDINGS
-    
-    SOURCES ANALYZED:
-    1. [URL] - [Site description]
-    2. [URL] - [Site description]
-    3. [URL] - [Site description]
-    
-    KEY INSIGHTS:
-    Market Trends:
-      - [Trend 1 with supporting data]
-      - [Trend 2 with supporting data]
-    
-    Technical Approaches:
-      - [Approach 1 with implementation details]
-      - [Approach 2 with implementation details]
-    
-    Success Stories:
-      - [Case study 1 summary]
-      - [Case study 2 summary]
-    
-    Vendor Landscape:
-      - [Vendor 1]: [capabilities and pricing]
-      - [Vendor 2]: [capabilities and pricing]
-    
-    RECOMMENDATIONS:
-      - [Actionable recommendation 1]
-      - [Actionable recommendation 2]
-    
-    RELEVANCE TO USE CASE:
-      - [How findings apply to current requirements]
-      - [Gaps identified that need further research]
-  agent: crawler_agent
-
 obsidian_export_task:
   description: |-
     After all analytical tasks finish, collect the final output text from each task in the

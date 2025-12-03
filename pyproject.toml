@@ -1,7 +1,7 @@
 [project]
-name = "untitled_project"
+name = "use_case_research"
 version = "0.1.0"
-description = "untitled_project using crewAI"
+description = "use_case_research using crewAI"
 authors = [{ name = "Your Name", email = "you@example.com" }]
 requires-python = ">=3.10,<3.14"
 dependencies = [
@@ -10,12 +10,12 @@ dependencies = [
 ]
 
 [project.scripts]
-untitled_project = "untitled_project.main:run"
-run_crew = "untitled_project.main:run"
-train = "untitled_project.main:train"
-replay = "untitled_project.main:replay"
-test = "untitled_project.main:test"
-run_with_trigger = "untitled_project.main:run_with_trigger"
+use_case_research = "use_case_research.main:run"
+run_crew = "use_case_research.main:run"
+train = "use_case_research.main:train"
+replay = "use_case_research.main:replay"
+test = "use_case_research.main:test"
+run_with_trigger = "use_case_research.main:run_with_trigger"
 
 [build-system]
 requires = ["hatchling"]
