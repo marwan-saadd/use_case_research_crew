@@ -1,0 +1,4 @@
+2025-11-21 13:06:46,749 - INFO - Session Replay for default trace: https://app.agentops.ai/sessions?trace_id=d65ed21603f3e2a927af4a166aa7db29
+2025-11-21 13:06:47,495 - INFO - You're on the agentops free plan 🤔
+2025-11-21 13:10:07,502 - ERROR - Error in span openai/gemini-2.5-flash.llm: list index out of range
+2025-11-21 13:12:39,296 - INFO - Session Replay for default.session trace: https://app.agentops.ai/sessions?trace_id=d65ed21603f3e2a927af4a166aa7db29

@@ -1,0 +1,339 @@
+---
+decomposition_task:
+  description: |-
+    Analyze the following use case description {use_case_description} and decompose it into structured requirements.
+    1. FUNCTIONAL REQUIREMENTS EXTRACTION
+       - Core capabilities the system must perform
+       - User interactions and workflows
+       - Data inputs and outputs
+       - Integration requirements with existing systems
+       - Business rules and logic flows
+    
+    2. NON-FUNCTIONAL REQUIREMENTS IDENTIFICATION
+       - Performance metrics (response time, throughput, concurrency)
+       - Scalability targets (users, transactions, data volume)
+       - Reliability and availability requirements (uptime, disaster recovery)
+       - Security and compliance needs (data privacy, regulations, certifications)
+       - Usability and accessibility standards
+       - Maintainability and support requirements
+    
+    3. COMPLEXITY CLASSIFICATION
+       - Data complexity (structured vs unstructured, number of sources)
+       - Integration complexity (number of systems, API availability, legacy systems)
+       - Logic complexity (simple rules vs multi-step reasoning)
+       - Overall system complexity rating: Simple / Moderate / Complex / Highly Complex
+  expected_output: |-
+    A structured requirements document in the following format:
+    USE CASE SUMMARY: [One-sentence description]
+
+    FUNCTIONAL REQUIREMENTS:
+      Core Capabilities:
+        1. [Capability with acceptance criteria]
+        2. [Capability with acceptance criteria]
+        ...
+      
+      User Workflows:
+        - [Key user journey mapped out]
+        ...
+      
+      Integration Requirements:
+        - [System to integrate with and purpose]
+        ...
+      
+      Business Rules:
+        - [Key business logic that must be implemented]
+        ...
+
+    NON-FUNCTIONAL REQUIREMENTS:
+      Performance:
+        - Response Time: [target with context]
+        - Throughput: [transactions/requests per unit time]
+        - Concurrency: [simultaneous users/sessions]
+      
+      Scalability:
+        - Current Load: [baseline metrics]
+        - Growth Projection: [expected growth over time period]
+        - Peak Capacity: [maximum expected load]
+      
+      Reliability:
+        - Uptime Target: [percentage with SLA details]
+        - Error Rate: [acceptable failure rate]
+        - Recovery Time: [RTO/RPO if applicable]
+      
+      Security & Compliance:
+        - Data Privacy: [regulations like GDPR, HIPAA, SOC2]
+        - Authentication: [requirements]
+        - Authorization: [access control needs]
+        - Audit Requirements: [logging and compliance needs]
+      
+      Usability:
+        - [User experience requirements]
+        - [Accessibility standards]
+
+    COMPLEXITY ANALYSIS:
+      Requirement Clarity Score: [X/10]
+        - Clear Requirements: [list what's well-defined]
+        - Ambiguous Areas: [what needs clarification]
+        - Assumptions Made: [list key assumptions with risk level]
+      
+      Data Complexity: [Simple/Moderate/Complex]
+        - Data Types: [structured, unstructured, semi-structured]
+        - Data Sources: [number and variety]
+        - Data Volume: [estimates]
+      
+      Integration Complexity: [Simple/Moderate/Complex]
+        - Number of Integrations: [count]
+        - Integration Types: [APIs, databases, legacy systems]
+        - Real-time vs Batch: [requirements]
+      
+      Logic Complexity: [Simple/Moderate/Complex]
+        - Decision Points: [number of conditional branches]
+        - Reasoning Depth: [single-step vs multi-step]
+        - Exception Handling: [variety of edge cases]
+      
+      OVERALL COMPLEXITY RATING: [Simple/Moderate/Complex/Highly Complex]
+      
+    MISSING INFORMATION:
+      - [Critical gaps that need stakeholder input]
+      - [Recommended follow-up questions]
+      
+  agent: use_case_decomposition_analyst
+
+decision_framework_task:
+  description: |-
+    Given the structured requirements from the decomposition_task, 
+    determine the optimal technical approach using systematic analysis and research.
+   
+
+    ANALYSIS WORKFLOW:
+    
+    1. WEB RESEARCH PHASE (Use web_search tool)
+       - Search: "agentic AI use cases for {industry}"
+       - Search: "when to use AI agents vs traditional automation"
+       - Search: "{industry} AI solution architecture patterns"
+
+    2. ALTERNATIVE SOLUTIONS ANALYSIS
+       Evaluate viability of:
+       - Rule-Based System: Can the logic be hardcoded?
+       - Traditional ML: Would a predictive model suffice?
+       - Workflow Automation: Can RPA/orchestration tools handle it?
+       - API Integration: Is this just a data transformation problem?
+       - Agentic AI: Does this need reasoning, planning, tool use?
+       - Hybrid Approach: What combination might work best?
+    
+    3. DECISION CRITERIA EVALUATION
+       For each factor, score the use case requirements:
+       
+       A. Task Structure (1-5 scale)
+          1 = Highly structured, fixed workflow
+          5 = Completely unstructured, variable paths
+          - Evaluate: Are the steps predictable or do they require dynamic planning?
+       
+       B. Decision Complexity (1-5 scale)
+          1 = Simple if-then rules sufficient
+          5 = Multi-step reasoning with context required
+          - Evaluate: Can decisions be expressed as decision trees or need inference?
+       
+       C. Data Characteristics (1-5 scale)
+          1 = Purely structured data (databases, APIs)
+          5 = Primarily unstructured data (text, images, audio)
+          - Evaluate: What's the mix and can traditional tools handle it?
+       
+       D. Environment Dynamism (1-5 scale)
+          1 = Static, well-defined, rarely changes
+          5 = Dynamic, evolving, frequent changes
+          - Evaluate: How often do rules, data, or requirements change?
+       
+       E. Autonomy Requirements (1-5 scale)
+          1 = Human-in-the-loop for every decision
+          5 = Fully autonomous operation needed
+          - Evaluate: What level of supervision is acceptable?
+       
+       F. Learning Necessity (1-5 scale)
+          1 = Static rules are sufficient indefinitely
+          5 = Must continuously adapt and improve
+          - Evaluate: Is learning from data essential to success?
+
+  expected_output: |-
+    AGENTIC AI DECISION ANALYSIS REPORT
+    PROBLEM CHARACTERISTICS SCORING:
+    ┌─────────────────────────┬───────┬────────────────────────────────────┐
+    │ Factor                  │ Score │ Analysis                           │
+    ├─────────────────────────┼───────┼────────────────────────────────────┤
+    │ Task Structure          │ X/5   │ [Structured vs unstructured flow]  │
+    │ Decision Complexity     │ X/5   │ [Simple rules vs reasoning needed] │
+    │ Data Characteristics    │ X/5   │ [Structured vs unstructured mix]   │
+    │ Environment Dynamism    │ X/5   │ [Static vs changing requirements]  │
+    │ Autonomy Requirements   │ X/5   │ [Supervision level needed]         │
+    │ Learning Necessity      │ X/5   │ [Static vs adaptive system]        │
+    ├─────────────────────────┼───────┼────────────────────────────────────┤
+    │ TOTAL AGENTIC FIT SCORE │ XX/30 │                                    │
+    └─────────────────────────┴───────┴────────────────────────────────────┘
+
+    SCORING INTERPRETATION:
+    • 24-30: Strong fit for agentic AI
+    • 18-23: Moderate fit, consider hybrid approach
+    • 12-17: Weak fit, traditional approaches likely better
+    • 6-11: Poor fit, avoid agentic complexity
+
+    SOLUTION OPTIONS EVALUATED:
+
+    Option 1: Traditional Rule-Based Automation
+      Viability: [High/Medium/Low]
+      Pros:
+        + [Advantage 1]
+        + [Advantage 2]
+      Cons:
+        - [Limitation 1]
+        - [Limitation 2]
+      Complexity: [rating]
+      Cost: [relative]
+      Time to Market: [relative]
+      Verdict: [Recommended / Not Recommended / Partial Fit]
+
+    Option 2: Traditional ML (Predictive Models)
+      Viability: [High/Medium/Low]
+      Pros:
+        + [Advantage 1]
+      Cons:
+        - [Limitation 1]
+      Verdict: [assessment]
+
+    Option 3: Agentic AI System
+      Viability: [High/Medium/Low]
+      Pros:
+        + [Advantage 1]
+        + [Advantage 2]
+        + [Advantage 3]
+      Cons:
+        - [Limitation 1]
+        - [Limitation 2]
+      Complexity: [rating]
+      Cost: [relative]
+      Time to Market: [relative]
+      Verdict: [assessment]
+
+    Option 4: Hybrid Approach
+      [If applicable, describe combination]
+      Verdict: [assessment]
+
+    DECISION SUMMARY:
+    [2-3 sentence executive summary of the recommendation, confidence level, and primary rationale]
+
+  agent: decision_framework_agent
+
+github_repo_research_task:
+  description: |-
+    Given the use case description {use_case_description}, search GitHub (via the available github mcp)
+    to identify open-source repositories that demonstrate similar
+    problem domains, architectures, or implementation patterns.
+
+    RESEARCH WORKFLOW:
+      1. Translate the use case into 2-3 keyword combinations (include tech stack, domain,
+         and capability terms).
+      2. Run GitHub-focused searches to surface candidate repos. When invoking the GitHub MCP tool,
+         always provide a JSON dictionary input (e.g., {"query": "workflow automation"})
+         with numeric fields as integers to avoid API errors.
+      3. Vet each candidate for:
+         - Relevance to the use case goals
+         - Evidence of active maintenance (stars, commits, issues)
+         - Documentation quality (README depth, examples, deployment notes)
+      4. Select the top 3 repositories that best illustrate the target solution space.
+      5. Capture quick supporting notes (why relevant, key tech, last update signals).
+
+  expected_output: |-
+    GITHUB REFERENCE SHORTLIST
+    1. [org/repo] - [one-sentence relevance summary]
+       - Key Tech: [stack/frameworks]
+       - Last Activity: [date or recency signal]
+       - Notable Links: [docs/demo/issue]
+    2. ...
+    3. ...
+
+    Notes:
+      - Explain selection rationale in 1-2 sentences per repo.
+      - Flag any concerns (e.g., low maintenance, missing docs).
+  agent: github_agent
+
+web_research_task:
+  description: |-
+    Given the use case description {use_case_description} and requirements from previous tasks,
+    crawl and extract relevant information from specified web sources to gather market insights,
+    technical documentation, and implementation examples.
+
+    RESEARCH WORKFLOW:
+      1. Identify 3-5 relevant websites based on the use case domain (industry publications,
+         technical blogs, vendor documentation, case studies)
+      2. Extract key information including:
+         - Market trends and adoption patterns
+         - Technical implementation approaches
+         - Success stories and lessons learned
+         - Pricing and vendor information
+         - Best practices and recommendations
+      3. Filter and synthesize the most relevant findings
+      4. Cross-reference findings with requirements from decomposition task
+
+  expected_output: |-
+    WEB RESEARCH FINDINGS
+    
+    SOURCES ANALYZED:
+    1. [URL] - [Site description]
+    2. [URL] - [Site description]
+    3. [URL] - [Site description]
+    
+    KEY INSIGHTS:
+    Market Trends:
+      - [Trend 1 with supporting data]
+      - [Trend 2 with supporting data]
+    
+    Technical Approaches:
+      - [Approach 1 with implementation details]
+      - [Approach 2 with implementation details]
+    
+    Success Stories:
+      - [Case study 1 summary]
+      - [Case study 2 summary]
+    
+    Vendor Landscape:
+      - [Vendor 1]: [capabilities and pricing]
+      - [Vendor 2]: [capabilities and pricing]
+    
+    RECOMMENDATIONS:
+      - [Actionable recommendation 1]
+      - [Actionable recommendation 2]
+    
+    RELEVANCE TO USE CASE:
+      - [How findings apply to current requirements]
+      - [Gaps identified that need further research]
+  agent: crawler_agent
+
+obsidian_export_task:
+  description: |-
+    After all analytical tasks finish, collect the final output text from each task in the
+    order they were executed and compile them into one consolidated Markdown recap.
+
+    EXECUTION STEPS:
+      1. Retrieve the final output for every completed task (decomposition, decision framework,
+         GitHub research, etc.) and note the originating agent.
+      2. Build a Markdown document with:
+         - Title: "{use_case_description} Crew Run Summary"
+         - For each task (chronological order): H2 heading = task name, include agent name,
+           short context sentence, then paste the exact final output verbatim.
+         - Closing section listing open questions or follow-ups.
+      3. Use the Obsidian MCP server to write the document to
+         `Konecta_TIC/{use_case_description}-crew-summary.md`.
+         Always send JSON dictionaries when calling Obsidian tools (e.g.,
+         {"path": "Konecta_TIC/2025-11-19-crew-summary.md", "content": "<markdown>", "mode": "write"}).
+      4. If the note already exists, overwrite it so the latest run replaces older versions.
+      5. Confirm the file path returned by the MCP call and capture it in the task output.
+
+  expected_output: |-
+    OBSIDIAN EXPORT LOG
+    - Note Path: Konecta_TIC/{use_case_description}-crew-summary.md
+    - Sections Included (in order):
+        1. [Task Name] – [Agent] – [characters count]
+        2. ...
+    - Obsidian Write Status: [success/failure + message]
+    - Follow-ups: [any missing data or retry notes]
+  agent: obsidian_report_agent
+
