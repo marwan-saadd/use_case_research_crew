@@ -232,7 +232,7 @@ github_repo_research_task:
       1. Translate the use case into 2-3 keyword combinations (include tech stack, domain,
          and capability terms).
       2. Run GitHub-focused searches to surface candidate repos. When invoking the GitHub MCP tool,
-         always provide a JSON dictionary input (e.g., {"query": "workflow automation"})
+         always provide a JSON dictionary input.
          with numeric fields as integers to avoid API errors.
       3. Vet each candidate for:
          - Relevance to the use case goals
@@ -270,8 +270,7 @@ obsidian_export_task:
          - Closing section listing open questions or follow-ups.
       3. Use the Obsidian MCP server to write the document to
          `Konecta_TIC/{use_case_description}-crew-summary.md`.
-         Always send JSON dictionaries when calling Obsidian tools (e.g.,
-         {"path": "Konecta_TIC/2025-11-19-crew-summary.md", "content": "<markdown>", "mode": "write"}).
+         Always send JSON dictionaries when calling Obsidian tools.
       4. If the note already exists, overwrite it so the latest run replaces older versions.
       5. Confirm the file path returned by the MCP call and capture it in the task output.
 

@@ -1,4 +1,4 @@
-2025-12-03 11:45:04,133 - INFO - Session Replay for default trace: https://app.agentops.ai/sessions?trace_id=043281d993f15f7fbaedb16127d80299
-2025-12-03 11:45:04,923 - INFO - You're on the agentops free plan 🤔
-2025-12-03 11:45:21,346 - ERROR - Error in span crewai.workflow: Failed to get native MCP tools: cannot access local variable 'tools_list' where it is not associated with a value
-2025-12-03 11:45:25,322 - INFO - Session Replay for default.session trace: https://app.agentops.ai/sessions?trace_id=043281d993f15f7fbaedb16127d80299
+2025-12-04 20:15:12,233 - INFO - Session Replay for default trace: https://app.agentops.ai/sessions?trace_id=d997dd4b4942a5f9c4902c60d6e278ac
+2025-12-04 20:15:13,299 - INFO - You're on the agentops free plan 🤔
+2025-12-04 20:18:17,234 - ERROR - Error in span crewai.workflow: Failed to get native MCP tools: cannot access local variable 'tools_list' where it is not associated with a value
+2025-12-04 20:18:26,227 - INFO - Session Replay for default.session trace: https://app.agentops.ai/sessions?trace_id=d997dd4b4942a5f9c4902c60d6e278ac

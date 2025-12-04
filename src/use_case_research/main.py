@@ -3,17 +3,13 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 import sys
-import agentops
+#import agentops
 import os
 from use_case_research.crew import UseCaseResearchCrew
 
-# This main file is intended to be a way for your to run your
-# crew locally, so refrain from adding unnecessary logic into this file.
-# Replace with inputs you want to test with, it will automatically
-# interpolate any tasks and agents information
 
-AGENTOPS_API_KEY = os.getenv("AGENTOPS_API_KEY")
-agentops.init(api_key=AGENTOPS_API_KEY, default_tags=['crewai'])
+#AGENTOPS_API_KEY = os.getenv("AGENTOPS_API_KEY")
+#agentops.init(api_key=AGENTOPS_API_KEY, default_tags=['crewai'])
 
 
 def run():
