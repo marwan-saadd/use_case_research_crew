@@ -7,17 +7,12 @@ from crewai.crews.crew_output import CrewOutput
 from crewai.project import CrewBase, agent, crew, task
 from crewai.mcp import MCPServerHTTP, MCPServerStdio
 from crewai_tools import (
-	SerplyWebSearchTool,
 	ScrapeWebsiteTool,
 )
 
 load_dotenv()
 MCP_GOOGLE_SEARCH_KEY = os.getenv("MCP_GOOGLE_SEARCH_KEY")
-NOTION_INTERNAL_TOKEN = os.getenv("NOTION_INTERNAL_INTEGRATION_TOKEN")
 GITHUB_PERSONAL_ACCESS_TOKEN = os.getenv("GITHUB_PERSONAL_ACCESS_TOKEN")
-OBSIDIAN_HOST = os.getenv("OBSIDIAN_HOST")
-OBSIDIAN_API_KEY = os.getenv("OBSIDIAN_API_KEY")
-
 
 @CrewBase
 class UseCaseResearchCrew:
@@ -94,17 +89,11 @@ class UseCaseResearchCrew:
         return Agent(
             config=self.agents_config["github_agent"],
             mcps=[
-                MCPServerStdio(
-                    command="docker",
-                    args=[
-                        "run",
-                        "-i",
-                        "--rm",
-                        "-e",
-                        "GITHUB_PERSONAL_ACCESS_TOKEN",
-                        "mcp/github",
-                    ],
-                    env={"GITHUB_PERSONAL_ACCESS_TOKEN": f"{GITHUB_PERSONAL_ACCESS_TOKEN}"},
+                MCPServerHTTP(
+                    url="https://kon-mcp-google-search-805102662749.us-central1.run.app/mcp",
+                    headers={"Authorization": f"{MCP_GOOGLE_SEARCH_KEY}"},
+                    streamable=True,
+                    cache_tools_list=True,
                 )
             ],
             reasoning=False,
@@ -117,6 +106,7 @@ class UseCaseResearchCrew:
             llm=self._build_llm(temperature=0.3),
         )
 
+    '''
     @agent
     def obsidian_report_agent(self) -> Agent:
         if not OBSIDIAN_API_KEY:
@@ -155,8 +145,8 @@ class UseCaseResearchCrew:
             max_execution_time=None,
             llm=self._build_llm(temperature=0.2),
         )
+    '''
 
-    
     @task
     def decomposition_task(self) -> Task:
         return Task(
@@ -178,6 +168,7 @@ class UseCaseResearchCrew:
             markdown=False,
         )
 
+    '''
     @task
     def obsidian_export_task(self) -> Task:
         return Task(
@@ -185,7 +176,8 @@ class UseCaseResearchCrew:
             markdown=False,
         )
     
-
+    '''
+    
     @crew
     def crew(self) -> Crew:
         """Creates the Use Case Research crew"""
