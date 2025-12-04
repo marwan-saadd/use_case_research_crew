@@ -20,8 +20,8 @@ class UseCaseResearchCrew:
 
     def _build_llm(self, temperature: float) -> LLM:
         model = os.getenv("MODEL")
-        api_key = os.getenv("GEMINI_API_KEY")
-        #base_url = os.getenv("OPENAI_BASE_URL")
+        api_key = os.getenv("OPENAI_API_KEY")
+        base_url = os.getenv("OPENAI_BASE_URL")
         if not model:
             raise RuntimeError(
                 "GEMINI_MODEL environment variable is not set. Please set it to the Gemini model you want to use (e.g., 'gemini-1.5-flash')."
@@ -30,7 +30,7 @@ class UseCaseResearchCrew:
             raise RuntimeError(
                 "GEMINI_API_KEY environment variable is not set. Please export a valid Gemini API key."
             )
-        return LLM(model=model, api_key=api_key, temperature=temperature)
+        return LLM(model=model, api_key=api_key, temperature=temperature, base_url=base_url)
 
     
     
