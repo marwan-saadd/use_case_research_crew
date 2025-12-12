@@ -255,32 +255,28 @@ github_repo_research_task:
       - Flag any concerns (e.g., low maintenance, missing docs).
   agent: github_agent
 
-# obsidian_export_task:
-#   description: |-
-#     After all analytical tasks finish, collect the final output text from each task in the
-#     order they were executed and compile them into one consolidated Markdown recap.
+report_task:
+  description: |-
+    After all analytical tasks finish, collect the final output text from each task in the
+    order they were executed and compile them into one consolidated Markdown recap.
 
-#     EXECUTION STEPS:
-#       1. Retrieve the final output for every completed task (decomposition, decision framework,
-#          GitHub research, etc.) and note the originating agent.
-#       2. Build a Markdown document with:
-#          - Title: "{use_case_description} Crew Run Summary"
-#          - For each task (chronological order): H2 heading = task name, include agent name,
-#            short context sentence, then paste the exact final output verbatim.
-#          - Closing section listing open questions or follow-ups.
-#       3. Use the Obsidian MCP server to write the document to
-#          `Konecta_TIC/{use_case_description}-crew-summary.md`.
-#          Always send JSON dictionaries when calling Obsidian tools.
-#       4. If the note already exists, overwrite it so the latest run replaces older versions.
-#       5. Confirm the file path returned by the MCP call and capture it in the task output.
+    EXECUTION STEPS:
+      1. Retrieve the final output for every completed task (decomposition, decision framework,
+         GitHub research, etc.) and note the originating agent.
+      2. Build a Markdown document with:
+         - Title: "{use_case_description} Crew Run Summary"
+         - For each task (chronological order): H2 heading = task name, include agent name,
+           short context sentence, then paste the exact final output verbatim.
+         - Closing section listing open questions or follow-ups.
+      3. Write the document to
+         `Konecta_TIC/{use_case_description}-crew-summary.md`.
+      4. If the note already exists, overwrite it so the latest run replaces older versions.
+      5. Confirm the file path returned by the MCP call and capture it in the task output.
 
-#   expected_output: |-
-#     OBSIDIAN EXPORT LOG
-#     - Note Path: Konecta_TIC/{use_case_description}-crew-summary.md
-#     - Sections Included (in order):
-#         1. [Task Name] – [Agent] – [characters count]
-#         2. ...
-#     - Obsidian Write Status: [success/failure + message]
-#     - Follow-ups: [any missing data or retry notes]
-#   agent: obsidian_report_agent
-
+  expected_output: |-
+    - Note Path: Konecta_TIC/{use_case_description}-crew-summary.md
+    - Sections Included (in order):
+        1. [Task Name] – [Agent] – [characters count]
+        2. ...
+    - Write Status: [success/failure + message]
+  agent: report_agent

@@ -8,11 +8,14 @@ from crewai.project import CrewBase, agent, crew, task
 from crewai.mcp import MCPServerHTTP, MCPServerStdio
 from crewai_tools import (
 	ScrapeWebsiteTool,
+    FileWriterTool,
 )
 
 load_dotenv()
 MCP_GOOGLE_SEARCH_KEY = os.getenv("MCP_GOOGLE_SEARCH_KEY")
 GITHUB_PERSONAL_ACCESS_TOKEN = os.getenv("GITHUB_PERSONAL_ACCESS_TOKEN")
+
+file_writer_tool = FileWriterTool()
 
 @CrewBase
 class UseCaseResearchCrew:
@@ -46,11 +49,11 @@ class UseCaseResearchCrew:
                     cache_tools_list=True,
                 )
             ],
-            reasoning=False,
-            max_reasoning_attempts=None,
+            reasoning=True,
+            max_reasoning_attempts=3,
             inject_date=True,
             allow_delegation=False,
-            max_iter=25,
+            max_iter=10,
             max_rpm=None,
             max_execution_time=None,
             llm=self._build_llm(temperature=0.5),
@@ -72,7 +75,7 @@ class UseCaseResearchCrew:
             max_reasoning_attempts=None,
             inject_date=True,
             allow_delegation=False,
-            max_iter=25,
+            max_iter=10,
             max_rpm=None,
             max_execution_time=None,
             llm=self._build_llm(temperature=0.7),
@@ -100,52 +103,30 @@ class UseCaseResearchCrew:
             max_reasoning_attempts=None,
             inject_date=True,
             allow_delegation=False,
-            max_iter=25,
+            max_iter=10,
             max_rpm=None,
             max_execution_time=None,
             llm=self._build_llm(temperature=0.3),
         )
 
-    '''
+    
     @agent
-    def obsidian_report_agent(self) -> Agent:
-        if not OBSIDIAN_API_KEY:
-            raise RuntimeError(
-                "OBSIDIAN_API_KEY environment variable is not set. "
-                "Please export a valid Obsidian API key to enable the Obsidian MCP server."
-            )
-
+    def report_agent(self) -> Agent:
         return Agent(
-            config=self.agents_config["obsidian_report_agent"],
-            mcps=[
-                MCPServerStdio(
-                    command="docker",
-                    args=[
-                        "run",
-                        "-i",
-                        "--rm",
-                        "-e",
-                        "OBSIDIAN_HOST",
-                        "-e",
-                        "OBSIDIAN_API_KEY",
-                        "mcp/obsidian",
-                    ],
-                    env={
-                        "OBSIDIAN_HOST": f"{OBSIDIAN_HOST}",
-                        "OBSIDIAN_API_KEY": f"{OBSIDIAN_API_KEY}",
-                    },
-                )
+            config=self.agents_config["report_agent"],
+            tools=[
+                file_writer_tool,
             ],
             reasoning=True,
             max_reasoning_attempts=None,
             inject_date=True,
             allow_delegation=False,
-            max_iter=15,
+            max_iter=10,
             max_rpm=None,
             max_execution_time=None,
             llm=self._build_llm(temperature=0.2),
         )
-    '''
+    
 
     @task
     def decomposition_task(self) -> Task:
@@ -168,15 +149,17 @@ class UseCaseResearchCrew:
             markdown=False,
         )
 
-    '''
+    
     @task
-    def obsidian_export_task(self) -> Task:
+    def report_task(self) -> Task:
         return Task(
-            config=self.tasks_config["obsidian_export_task"],
+            config=self.tasks_config["report_task"],
             markdown=False,
+            context=[self.decomposition_task(), self.decision_framework_task(), self.github_repo_research_task()],
+            tools=[file_writer_tool]
         )
     
-    '''
+    
 
     @crew
     def crew(self) -> Crew:
